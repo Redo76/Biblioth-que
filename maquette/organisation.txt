@@ -1,0 +1,35 @@
+*
+*
+*
+Liste des livres (catalogue) : -------------------------------------------
+	Titre -> Status -> Emprunteur -> Fiche -> Ajouter -> Supprimer
+--------------------------------------------------------------------------
+*
+*
+*
+Fiche descriptive du livre : ---------------------------------------------
+	- Infos livre
+		- titre
+		- auteur
+		- résumé
+		- date de parution
+		- catégorie.
+
+	- Infos Emprunteur
+		- numero client
+		- nom
+		- prénom
+--------------------------------------------------------------------------
+*
+*
+*
+Liste des menbres : ------------------------------------------------------
+	- Numéro client -> Nom -> Prénom -> Fiche -> Ajouter -> Supprimer
+--------------------------------------------------------------------------
+*
+*
+*
+Fiche descriptive du menbre : --------------------------------------------
+	- Infos Client
+	- Infos Emprunts
+--------------------------------------------------------------------------
