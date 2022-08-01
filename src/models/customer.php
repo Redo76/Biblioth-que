@@ -3,8 +3,8 @@ class customer
 {
 
     private int $idUser;
-    private int $firstName;
-    private int $lastName;
+    private string $firstName;
+    private string $lastName;
 
     //getter
     public function getIdUser()
