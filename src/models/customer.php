@@ -2,14 +2,14 @@
 class customer
 {
 
-    private int $idUser;
+    private int $idCustomer;
     private int $firstName;
     private int $lastName;
 
     //getter
-    public function getIdUser()
+    public function getidCustomer()
     {
-        return $this->idUser;
+        return $this->idCustomer;
     }
 
     public function getFirstName()
@@ -23,9 +23,9 @@ class customer
     }
 
     //setter
-    public function setIdUser($id)
+    public function setidCustomer($id)
     {
-        return $this->idUser = $id;
+        return $this->idCustomer = $id;
     }
 
     public function setFirstName($fName)

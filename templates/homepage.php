@@ -10,7 +10,7 @@
                 <label for="titre">Titre</label><br>
                 <input type="text" name="titre">
                 <br><br>
-                <a href="./ficheLivreVierge.html"><button class="btnAjouter">Ajouter</button></a>
+                <a href="./index.php?ficheLivreVierge.html"><button class="btnAjouter">Ajouter</button></a>
                 <!-- <button class="btnSupprimer">Supprimer</button> -->
                 <br><br>
                 <h3>Recherche par :</h3>
@@ -59,7 +59,7 @@
                     <input type="text" value="" class="inputEmprunteur" id="e1">
                 </div>
                 <div class="colonneFiche">
-                    <a href="./fiche_livre.php"><button class="btnFiche">Fiche</button></a>
+                    <a href="./index.php?fiche_livre.php"><button class="btnFiche">Fiche</button></a>
                 </div>
             </div>
             <!-- FIN -->
