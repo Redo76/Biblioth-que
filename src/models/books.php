@@ -65,6 +65,14 @@ class Book
     {
         return $this->publisher = $publisher;
     }
+
+
+    public function findBooks(){
+        $continentsDB = $db -> prepare("SELECT * FROM books");
+        $continentsDB -> execute();
+        $continents = $continentsDB -> fetchAll();  
+    }
+
 }
 
 
