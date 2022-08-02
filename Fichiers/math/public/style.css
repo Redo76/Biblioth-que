@@ -113,6 +113,7 @@ h1 {
     height: 64vh;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 .search {
@@ -120,8 +121,8 @@ h1 {
     width: 200px;
     height: 420px;
     border-radius: 0.3em;
-    padding-left: 30px;
-    overflow: hidden;
+    padding-left: 20px;
+    /* overflow: hidden; */
     position: fixed;
     color: var(--color0b);
 }
@@ -199,23 +200,23 @@ h1 {
 }
 
 .colonneStatusB {
-    width: 16%;
+    width: 25%;
     padding: 8px;
     color: var(--color0b);
 }
 
 .colonneEmprunteurB {
-    width: 16%;
+    width: 25%;
     /* width: 16%; */
     padding: 8px;
     color: var(--color0b);
 }
 
-.colonneFicheB {
+/* .colonneFicheB {
     width: 16%;
     padding: 8px;
     color: var(--color0b);
-}
+} */
 
 /* ****************************************************************/
 /* Cellule dynamique **********************************************/
@@ -225,24 +226,30 @@ h1 {
     padding: 8px;
 }
 
+.colonneTitre a {
+    color: var(--color0);
+    text-decoration: none;
+    font-size: 1.0em;
+}
+
 .colonneStatus {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 16%;
+    width: 25%;
     padding: 8px;
 }
 
 .colonneEmprunteur {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 16%;
+    width: 25%;
     padding: 8px;
 }
 
-.colonneFiche {
+/* .colonneFiche {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 16%;
     padding: 8px;
     color: aliceblue;
-}
+} */
 
 /* ****************************************************************/
 /* contenu dynamique **********************************************/
@@ -356,6 +363,7 @@ h1 {
 .DetailContainer {
     display: flex;
     flex-flow: column;
+    overflow: hidden;
 }
 
 .labelOuvrage {
@@ -439,4 +447,25 @@ h1 {
     display: flex;
     flex-flow: column;
     align-items: center;
+}
+
+
+/* ****************************************************************/
+/* tweak for small screen *****************************************/
+@media screen and (max-width: 900px) {
+
+    .search {
+        width: 150px;
+        padding-left: 10px;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .search {
+        /* display: none; */
+        position: relative;
+    }
+
 }
