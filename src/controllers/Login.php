@@ -2,7 +2,6 @@
 class Login{
 
     public function displayLogin(){
-        session_start();
 
         var_dump($_SESSION);
         require("../templates/login.php");
@@ -10,18 +9,19 @@ class Login{
     }
 
     public function submitLogin(){
-        session_start();
 
         require("../src/pdo/PDO.php");
 
-        $adminDB = $db -> prepare("SELECT * FROM admin");
-        $adminDB -> execute();
-        $admin = $adminDB -> fetchAll();
         
+        var_dump($admin);
+        
+        $lastname = strip_tags($_POST['lastname']); 
+        $firstname = strip_tags($_POST['firstname']); 
+        $password = strip_tags($_POST['password']);
 
-        $lastname = $_POST['lastname']; 
-        $firstname = $_POST['firstname']; 
-        $password = $_POST['password'];
+        $adminDB = $db -> prepare("SELECT * FROM admin WHERE first_name = :firstName");
+        $adminDB -> execute(['firstName' => $firstname]);
+        $admin = $adminDB -> fetchAll();
 
         if (isset($lastname) && isset($firstname) && isset($password)) {
             // if (password_verify($password, $admin['password'])) {
