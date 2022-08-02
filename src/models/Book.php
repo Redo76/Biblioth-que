@@ -83,7 +83,7 @@ class Book
         $bookDB = $db -> prepare("SELECT * FROM books WHERE id = :id");
         $bookDB -> execute(['id' => $id]);
         $book = $bookDB -> fetchAll(); 
-        return $book;
+        return $book[0];
     }
 }
 

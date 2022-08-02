@@ -32,31 +32,20 @@
         <div class="DetailContainer">
             <div class="my2div">
                 <label for="InputTitre" class="labelOuvrage">Titre</label>
-                <input type="text" name="InputTitre" value="Code civil 2023" class="InputOuvrage">
+                <input type="text" name="InputTitre" value="<?= $book['Title'] ?>" class="InputOuvrage" disabled>
                 <br>
 
                 <label for="InputAuteur" class="labelOuvrage">Auteur</label>
-                <select name="InputAuteur" class="InputOuvrage">
-                    <option value="Alan Wake">Alan Wake</option>
-                    <option value="Redouane">Redouane</option>
-                    <option value="Théodore">Théodore</option>
-                    <option value="Jean-Charles">Jean-Charles</option>
-                    <option value="Mathieu">Mathieu</option>
-                </select>
+                <input type="text" name="InputTitre" value="<?= $book['id_author'] ?>" class="InputOuvrage" disabled>
                 <br>
             </div>
             <div class="my2div">
                 <label for="InputDateDePublication" class="labelOuvrage">Publication</label>
-                <input type="date" name="InputDateDePublication" value="02/10/1978" class="InputOuvrage">
+                <input type="date" name="InputDateDePublication" value="02/10/1978" class="InputOuvrage" disabled>
                 <br>
 
                 <label for="InputRésumé" class="labelOuvrage">Genre</label>
-                <select name="InputGenre" class="InputOuvrage">
-                    <option value="Roman">Roman</option>
-                    <option value="Poésie">Poésie</option>
-                    <option value="Aventure">Aventure</option>
-                    <option value="Etc...">Etc...</option>
-                </select>
+                <input type="text" name="InputTitre" value="<?= $book['id_category'] ?>" class="InputOuvrage" disabled>
             </div>
             <br>
             <label for="InputRésumé" class="labelOuvrage">Résumé</label>

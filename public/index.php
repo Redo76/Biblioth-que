@@ -1,12 +1,13 @@
 <?php 
 
 require_once('../src/controllers/Homepage.php');
+require_once('../src/controllers/Fiche.php');
 
 try {
 
     if (isset($_GET['action']) && $_GET['action'] !== "") {
         if ($_GET["action"] == "fiche") {
-            require("../templates/fiche_livre.php");
+            (new Fiche())->ficheBook();
         }
         elseif ($_GET["action"] == "fichevierge") {
             require("../templates/fiche_livre_vierge.php");
