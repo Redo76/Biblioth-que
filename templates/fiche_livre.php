@@ -50,7 +50,7 @@
             <br>
             <label for="InputRésumé" class="labelOuvrage">Résumé</label>
             <textarea name="InputRésumé" cols="30" rows="10"
-                class="TextAreaOuvrage">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem optio mollitia incidunt, autem minus reiciendis et sit eveniet libero consequuntur placeat sed minima est neque magni distinctio odio! Similique, quod?</textarea>
+                class="TextAreaOuvrage" disabled><?= $book['description'] ?></textarea>
             <br>
 
             <table class="tableEmprunteur">
