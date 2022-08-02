@@ -224,6 +224,9 @@ h1 {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 50%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 .colonneTitre a {
@@ -236,12 +239,18 @@ h1 {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 25%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 .colonneEmprunteur {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 25%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 /* .colonneFiche {
