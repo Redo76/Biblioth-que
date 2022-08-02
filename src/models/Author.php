@@ -29,4 +29,13 @@ class Author{
     public function setLastName($lastName){
     return $this -> lastName = $lastName;
     }
+
+
+    public function findAuthorById($authId){
+        require('../src/pdo/PDO.php');
+        $bookDB = $db -> prepare("SELECT author FROM author WHERE id = :id");
+        $bookDB -> execute(['id' => $authId]);
+        $book = $bookDB -> fetchAll(); 
+        return $book[0];
+    }
 }

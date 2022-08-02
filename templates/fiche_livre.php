@@ -36,7 +36,7 @@
                 <br>
 
                 <label for="InputAuteur" class="labelOuvrage">Auteur</label>
-                <input type="text" name="InputTitre" value="<?= $book['id_author'] ?>" class="InputOuvrage" disabled>
+                <input type="text" name="InputTitre" value="<?= $book['author'] ?>" class="InputOuvrage" disabled>
                 <br>
             </div>
             <div class="my2div">
@@ -45,7 +45,7 @@
                 <br>
 
                 <label for="InputRésumé" class="labelOuvrage">Genre</label>
-                <input type="text" name="InputTitre" value="<?= $book['id_category'] ?>" class="InputOuvrage" disabled>
+                <input type="text" name="InputTitre" value="<?= $book['category'] ?>" class="InputOuvrage" disabled>
             </div>
             <br>
             <label for="InputRésumé" class="labelOuvrage">Résumé</label>
