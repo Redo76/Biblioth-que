@@ -29,7 +29,7 @@ class Login{
             // }
             if($lastname == "gabor" && $firstname == "theodore" && $password == "library"){
                 $_SESSION['loggedUser'] = 3;
-                header('Location: /');
+                header('Location: ../index.php');
             } 
             else {
                 $_SESSION['login_error'] = "L";

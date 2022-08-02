@@ -35,11 +35,11 @@
 
                 <input type="submit" id='submit' value='LOGIN' >
                 <?php
-                // if(isset($_SESSION['erreur'])){
-                //     $err = $_SESSION['erreur'];
-                //     if($err==1 || $err==2)
-                //         echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                // }
+                if(isset($_SESSION['login_error'])){
+                    $err = $_SESSION['login_error'];
+                    if($err==1 || $err==2)
+                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                }
                 ?>
             </form>
     </div>
