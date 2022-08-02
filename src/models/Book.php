@@ -1,4 +1,6 @@
 <?php
+
+
 class Book
 {
     private INT $idBook;
@@ -68,11 +70,21 @@ class Book
 
 
     public function findBooks(){
-        $continentsDB = $db -> prepare("SELECT * FROM books");
-        $continentsDB -> execute();
-        $continents = $continentsDB -> fetchAll();  
+        require('../src/pdo/PDO.php');
+        $booksDB = $db -> prepare("SELECT * FROM books");
+        $booksDB -> execute();
+        $books = $booksDB -> fetchAll(); 
+        return $books;
     }
 
+
+    public function findBookById($id){
+        require('../src/pdo/PDO.php');
+        $bookDB = $db -> prepare("SELECT * FROM books WHERE id = :id");
+        $bookDB -> execute(['id' => $id]);
+        $book = $bookDB -> fetchAll(); 
+        return $book;
+    }
 }
 
 

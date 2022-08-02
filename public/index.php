@@ -1,5 +1,7 @@
 <?php 
 
+require_once('../src/controllers/Homepage.php');
+
 try {
 
     if (isset($_GET['action']) && $_GET['action'] !== "") {
@@ -11,7 +13,7 @@ try {
         }
     }
     else {
-        require("../templates/homepage.php");
+        (new Homepage())->index();
     }
 } 
 catch (Exception $e) {
