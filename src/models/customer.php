@@ -1,5 +1,5 @@
 <?php
-class customer
+class Customer
 {
 
     private int $idCustomer;

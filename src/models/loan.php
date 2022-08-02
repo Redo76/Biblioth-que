@@ -1,5 +1,5 @@
 <?php
-class loan
+class Loan
 {
 
     private int $idLoan;

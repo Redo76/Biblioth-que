@@ -1,25 +1,26 @@
 <?php
 class Category{
-private INT $idCategory;
-private string $name;
+
+    private INT $idCategory;
+    private string $name;
 
 
-//getters
-public function getIdCatgeory(){
-    return $this -> idCategory ;
-}
+    //getters
+    public function getIdCatgeory(){
+        return $this -> idCategory ;
+    }
 
-public function getName(){
-    return $this -> name ;
-}
+    public function getName(){
+        return $this -> name ;
+    }
 
 
-//setters
-public function setIdCategory($idCategory){
-    return $this -> idCategory = $idCategory;
-}
+    //setters
+    public function setIdCategory($idCategory){
+        return $this -> idCategory = $idCategory;
+    }
 
-public function setName($name){
-    return $this -> name = $name;
-}
+    public function setName($name){
+        return $this -> name = $name;
+    }
 }

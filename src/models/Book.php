@@ -1,7 +1,7 @@
 <?php
 class Book
 {
-    private INT $idBooks;
+    private INT $idBook;
     private string $title;
     private INT $quantity;
     private bool $available;
@@ -11,7 +11,7 @@ class Book
 
 
     // getters
-    public function GetIdBooks()
+    public function GetIdBook()
     {
         return $this->idBooks;
     }
@@ -41,7 +41,7 @@ class Book
     }
 
     //setters
-    public function SetIdBooks($id)
+    public function SetIdBook($id)
     {
         return $this->idBooks = $id;
     }
