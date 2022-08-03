@@ -7,8 +7,8 @@ html {
     --color1Over: hsla(169, 100%, 21%, 0.8);
     --color2: hsla(328, 100%, 21%, 0.3);
     --color2Over: hsla(328, 100%, 21%, 0.8);
-    --colorBg1: rgba(200, 140, 160, 0.5);
-    --colorBg2: rgba(0, 0, 64, 0.5);
+    --colorBg1: rgba(200, 140, 160, 0.8);
+    --colorBg2: rgba(0, 0, 64, 0.8);
     --colorM1: hsla(169, 100%, 75%, 0.6);
     --colorM1Over: hsla(169, 100%, 75%, 0.9);
     --colorM2: hsla(53, 100%, 75%, 0.6);
@@ -113,6 +113,7 @@ h1 {
     height: 64vh;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 .search {
@@ -120,8 +121,8 @@ h1 {
     width: 200px;
     height: 420px;
     border-radius: 0.3em;
-    padding-left: 30px;
-    overflow: hidden;
+    padding-left: 20px;
+    /* overflow: hidden; */
     position: fixed;
     color: var(--color0b);
 }
@@ -199,23 +200,23 @@ h1 {
 }
 
 .colonneStatusB {
-    width: 16%;
+    width: 25%;
     padding: 8px;
     color: var(--color0b);
 }
 
 .colonneEmprunteurB {
-    width: 16%;
+    width: 25%;
     /* width: 16%; */
     padding: 8px;
     color: var(--color0b);
 }
 
-.colonneFicheB {
+/* .colonneFicheB {
     width: 16%;
     padding: 8px;
     color: var(--color0b);
-}
+} */
 
 /* ****************************************************************/
 /* Cellule dynamique **********************************************/
@@ -223,26 +224,41 @@ h1 {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 50%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+.colonneTitre a {
+    color: var(--color0);
+    text-decoration: none;
+    font-size: 1.0em;
 }
 
 .colonneStatus {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 16%;
+    width: 25%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 .colonneEmprunteur {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 16%;
+    width: 25%;
     padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
-.colonneFiche {
+/* .colonneFiche {
     background-color: hsla(210, 67%, 94%, 0.75);
     width: 16%;
     padding: 8px;
     color: aliceblue;
-}
+} */
 
 /* ****************************************************************/
 /* contenu dynamique **********************************************/
@@ -356,6 +372,7 @@ h1 {
 .DetailContainer {
     display: flex;
     flex-flow: column;
+    overflow: hidden;
 }
 
 .labelOuvrage {
@@ -439,4 +456,25 @@ h1 {
     display: flex;
     flex-flow: column;
     align-items: center;
+}
+
+
+/* ****************************************************************/
+/* tweak for small screen *****************************************/
+@media screen and (max-width: 900px) {
+
+    .search {
+        width: 150px;
+        padding-left: 10px;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .search {
+        /* display: none; */
+        position: relative;
+    }
+
 }

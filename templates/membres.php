@@ -8,17 +8,17 @@
         <div class="search">
             <h3>Opérations :</h3>
             <label for="newAdherent">Nom du nouvel adhérent</label><br>
-            <input type="text" name="newAdherent">
+            <input type="text" name="newAdherent" class="inputEmprunteur">
             <br><br>
-            <a href="./index.php?ficheMembreVierge.html"><button class="btnAjouter">Ajouter</button></a>
+            <a href="./index.php?action=creation_membre"><button class="btnAjouter">Ajouter</button></a>
             <!-- <button class="btnSupprimer">Supprimer</button> -->
             <br><br>
             <h3>Recherche par :</h3>
             <label for="numAdherent">Numéro d'adhérent</label><br>
-            <input type="text" name="numAdherent">
+            <input type="text" name="numAdherent" class="inputEmprunteur">
             <br><br>
             <label for="nomAdherent">Nom ou prénom</label><br>
-            <input type="text" name="nomAdherent">
+            <input type="text" name="nomAdherent" class="inputEmprunteur">
             <br><br>
             <button class="btnFiche">Rechercher</button>
             <div class="themeSelector">
@@ -27,11 +27,21 @@
             </div>
         </div>
     </div>
+
     <!-- SECTION CATALOGUE /////////////////////////// -->
     <div class="catalogue">
         <div class="ligneCatalogue">
-            <div class="colonneTitreB">
-                <strong>Nom Prénom, Rue, Téléphone</strong>
+            <div class="">
+                <strong>Nom</strong>
+            </div>
+            <div class="">
+                <strong>Prénom</strong>
+            </div>
+            <div class="">
+                <strong>Adresse</strong>
+            </div>
+            <div class="">
+                <strong>Téléphone</strong>
             </div>
             <div class="colonneStatusB">
                 <strong>Numéro</strong>
@@ -39,15 +49,25 @@
             <div class="colonneEmprunteurB">
                 <strong>Emprunts</strong>
             </div>
-            <div class="colonneFicheB">
+            <!-- <div class="colonneFicheB">
                 <strong>Infos</strong>
-            </div>
+            </div> -->
         </div>
 
         <!-- EXEMPLE 1 -->
+        <?php foreach ($customers as $key => $customer) : ?>
         <div class="ligneCatalogueB">
             <div class="colonneTitre">
-                <p class="booktitle">Falez Mathieu, Rue de l'abreuvoir, 06.11.51.27.73</p>
+                <p class="booktitle"><?= $customer['last_name'] ?></p>
+            </div>
+            <div class="colonneTitre">
+                <p class="booktitle"><?= $customer['first_name'] ?></p>
+            </div>
+            <div class="colonneTitre">
+                <p class="booktitle"><?= $customer['address'] ?></p>
+            </div>
+            <div class="colonneTitre">
+                <p class="booktitle"><?= $customer['phone'] ?></p>
             </div>
             <div class="colonneStatus">
                 <p class="booktitle">00210</p>
@@ -60,10 +80,11 @@
                     <option value="Theory of Everything, The" class="">Theory of Everything, The</option>
                 </select>
             </div>
-            <div class="colonneFiche">
+            <!-- <div class="colonneFiche">
                 <a href="./index.php?fiche_membre.php"><button class="btnFicheMembre">Infos</button></a>
-            </div>
+            </div> -->
         </div>
+        <?php endforeach ?>
         <!-- FIN -->
     </div>
 </div>

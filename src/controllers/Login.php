@@ -8,12 +8,12 @@ class Login{
         unset($_SESSION['login_error']);
     }
 
+
     public function submitLogin(){
 
         require("../src/pdo/PDO.php");
 
         
-        var_dump($admin);
         
         $lastname = strip_tags($_POST['lastname']); 
         $firstname = strip_tags($_POST['firstname']); 
@@ -23,18 +23,29 @@ class Login{
         $adminDB -> execute(['firstName' => $firstname]);
         $admin = $adminDB -> fetchAll();
 
+        $currentAdmin = $admin[0];
+        var_dump($currentAdmin);
+        var_dump($currentAdmin['password']);
+
+
         if (isset($lastname) && isset($firstname) && isset($password)) {
-            // if (password_verify($password, $admin['password'])) {
-                
-            // }
-            if($lastname == "gabor" && $firstname == "theodore" && $password == "library"){
-                $_SESSION['loggedUser'] = 3;
-                header('Location: ../index.php');
+            if($lastname == $currentAdmin['last_name'] && $firstname == $currentAdmin['first_name']){
+                if ($password == $currentAdmin['password']) {
+                    $_SESSION['loggedUser'] = $firstname;
+                    header('Location: ../index.php');
+                }
+                else {
+                    // header('Location: ../index.php');
+                    $_SESSION['login_error'] = 2;
+                } 
             } 
             else {
-                $_SESSION['login_error'] = "L";
+                header('Location: ../index.php');   
+                $_SESSION['login_error'] = 1;
             }  
         }
+
+        var_dump($_SESSION);
 
     }
 }

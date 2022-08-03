@@ -6,6 +6,8 @@ require_once('../src/controllers/Homepage.php');
 require_once('../src/controllers/Fiche.php');
 require_once('../src/controllers/Login.php');
 require_once('../src/controllers/Logout.php');
+require_once('../src/controllers/HomeCustomer.php');
+require_once('../src/controllers/CreationMembre.php');
 
 try {
 
@@ -21,6 +23,15 @@ try {
         }
         elseif ($_GET["action"] == "logout") {
             (new Logout())->logout();
+        }
+        elseif ($_GET["action"] == "creation_membre") {
+            (new creationMembre)->displayForm();
+        }
+        elseif ($_GET["action"] == "submitCreation_membre") {
+            (new creationMembre)->creation();
+        }
+        elseif ($_GET["action"] == "membres") {
+            (new HomeCustomer())->customers();
         }
     }
     else {

@@ -6,8 +6,8 @@ class Customer
     private string $firstName;
     private string $lastName;
     private string $email;
-    private string $adress;
-    private string $tel;
+    private string $address;
+    private string $phone;
 
     //getter
     public function getidCustomer()
@@ -28,13 +28,13 @@ class Customer
     {
         return $this->email;
     }
-    public function getAdress()
+    public function getAddress()
     {
-        return $this->adress;
+        return $this->address;
     }
-    public function getTel()
+    public function getPhone()
     {
-        return $this->tel;
+        return $this->phone;
     }
 
     //setter
@@ -56,12 +56,21 @@ class Customer
     {
         return $this->email = $email;
     }
-    public function setAdress($adress)
+    public function setAddress($address)
     {
-        return $this->adress = $adress;
+        return $this->address = $address;
     }
-    public function setTel($tel)
+    public function setPhone($phone)
     {
-        return $this->tel = $tel;
+        return $this->phone = $phone;
+    }
+
+    public function findCustomers()
+    {
+        require('../src/pdo/PDO.php');
+        $customersDB = $db->prepare("SELECT id_customer, first_name, last_name, email, address, phone FROM customer");
+        $customersDB->execute();
+        $customers = $customersDB->fetchAll();
+        return $customers;
     }
 }

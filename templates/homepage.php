@@ -39,16 +39,16 @@
                 <div class="colonneEmprunteurB">
                     <strong>Emprunteur</strong>
                 </div>
-                <div class="colonneFicheB">
+                <!-- <div class="colonneFicheB">
                     <strong>Fiche</strong>
-                </div>
+                </div> -->
             </div>
 
             <!-- EXEMPLE 1 -->
             <?php foreach ($books as $key => $book) : ?>
                 <div class="ligneCatalogueB">
                     <div class="colonneTitre">
-                        <p class="booktitle"><?= $book['Title'] ?></p>
+                        <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><p class="booktitle"><?= $book['Title'] ?></p></a>
                     </div>
                     <div class="colonneStatus">
                         <select name="" class="selectStatusD" id="s1">
@@ -59,9 +59,9 @@
                     <div class="colonneEmprunteur">
                         <input type="text" value="" class="inputEmprunteur" id="e1">
                     </div>
-                    <div class="colonneFiche">
+                    <!-- <div class="colonneFiche">
                         <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><button class="btnFiche">Fiche</button></a>
-                    </div>
+                    </div> -->
                 </div>
             <?php endforeach ?>
             <!-- FIN -->
