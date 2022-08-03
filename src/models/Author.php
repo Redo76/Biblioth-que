@@ -31,11 +31,11 @@ class Author{
     }
 
 
-    public function findAuthorById($authId){
+    public function findAuthors(){
         require('../src/pdo/PDO.php');
-        $bookDB = $db -> prepare("SELECT author FROM author WHERE id = :id");
-        $bookDB -> execute(['id' => $authId]);
+        $bookDB = $db -> prepare("SELECT a.author FROM author a");
+        $bookDB -> execute();
         $book = $bookDB -> fetchAll(); 
-        return $book[0];
+        return $book;
     }
 }

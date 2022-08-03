@@ -2,8 +2,6 @@
 class Login{
 
     public function displayLogin(){
-
-        var_dump($_SESSION);
         require("../templates/login.php");
         unset($_SESSION['login_error']);
     }
@@ -21,18 +19,17 @@ class Login{
 
         $adminDB = $db -> prepare("SELECT * FROM admin WHERE first_name = :firstName");
         $adminDB -> execute(['firstName' => $firstname]);
-        $admin = $adminDB -> fetchAll();
+        $admin = $adminDB -> fetch();
 
-        $currentAdmin = $admin[0];
-        var_dump($currentAdmin);
-        var_dump($currentAdmin['password']);
+        var_dump($admin);
+        var_dump($admin['password']);
 
 
         if (isset($lastname) && isset($firstname) && isset($password)) {
-            if($lastname == $currentAdmin['last_name'] && $firstname == $currentAdmin['first_name']){
-                if ($password == $currentAdmin['password']) {
+            if($lastname == $admin['last_name'] && $firstname == $admin['first_name']){
+                if ($password == $admin['password']) {
                     $_SESSION['loggedUser'] = $firstname;
-                    header('Location: ../index.php');
+                    // header('Location: ../index.php');
                 }
                 else {
                     // header('Location: ../index.php');
@@ -40,7 +37,7 @@ class Login{
                 } 
             } 
             else {
-                header('Location: ../index.php');   
+                // header('Location: ../index.php');   
                 $_SESSION['login_error'] = 1;
             }  
         }

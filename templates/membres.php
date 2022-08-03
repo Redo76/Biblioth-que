@@ -70,7 +70,7 @@
                 <p class="booktitle"><?= $customer['phone'] ?></p>
             </div>
             <div class="colonneStatus">
-                <p class="booktitle">00210</p>
+                <p class="booktitle"><?= $customer['id_customer'] ?></p>
             </div>
             <div class="colonneEmprunteur">
                 <select name="" class="selectEmpruntMembre" id="">

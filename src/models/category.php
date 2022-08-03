@@ -23,4 +23,12 @@ class Category{
     public function setName($name){
         return $this -> name = $name;
     }
+
+    public function findCategories(){
+        require('../src/pdo/PDO.php');
+        $categoriesDB = $db -> prepare("SELECT c.name FROM  category c ");
+        $categoriesDB -> execute();
+        $categories = $categoriesDB -> fetchAll(); 
+        return $categories;
+    }
 }

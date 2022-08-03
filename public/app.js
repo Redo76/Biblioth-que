@@ -141,3 +141,7 @@ function test3(id) {
         document.documentElement.style.setProperty("--colorM2Over", "hsla(30, 100%, 33%, 0.9)");
     }
 }
+
+$(document).ready(function () {
+    $('#example').DataTable();
+});

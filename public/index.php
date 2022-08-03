@@ -12,9 +12,12 @@ require_once('../src/controllers/CreationMembre.php');
 try {
 
     if (isset($_GET['action']) && $_GET['action'] !== "") {
-        if (isset($_SESSION['loggedUser'])) {
+        // if (isset($_SESSION['loggedUser'])) {
             if ($_GET["action"] == "fiche") {
-                (new Fiche())->ficheBook();
+                (new Fiche())->displayficheBook();
+            }
+            elseif ($_GET["action"] == "loan") {
+                (new Fiche())->submitLoan();
             }
             elseif ($_GET["action"] == "fichevierge") {
                 require("../templates/fiche_livre_vierge.php");
@@ -34,10 +37,10 @@ try {
             elseif ($_GET["action"] == "membres") {
                 (new HomeCustomer())->customers();
             }
-        }
-        else {
-            (new Login())->displayLogin();
-        }
+        // }
+        // else {
+        //     (new Login())->displayLogin();
+        // }
     }
     else {
         if (isset($_SESSION['loggedUser'])) {

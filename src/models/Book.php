@@ -80,8 +80,8 @@ class Book
         require('../src/pdo/PDO.php');
         $bookDB = $db -> prepare("SELECT b.id as id,b.Title as Title,b.published_date as p_date,b.available as available,b.description as description,c.name as category,a.author as author,p.name as publisher FROM books b LEFT JOIN category c ON b.id_category = c.id_category LEFT JOIN author a ON b.id_author = a.id_author LEFT JOIN publisher p ON b.id_publisher = p.id_publisher WHERE id = :id");
         $bookDB -> execute(['id' => $id]);
-        $book = $bookDB -> fetchAll(); 
-        return $book[0];
+        $book = $bookDB -> fetch(); 
+        return $book;
     }
 
 }

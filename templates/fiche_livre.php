@@ -11,7 +11,39 @@
                 <a href="./catalogue.html"><button class="btnSupprimer">Supprimer</button></a>
                 <div class="selectStatusE">Emprunté par 00123</div>
 
-                <h3>Emprunteur :</h3>
+                <h3>Ajouter un emprunt :</h3>
+
+                <form action="index.php?action=loan&id=<?= $book['id'] ?>" method="post">
+                    <div>
+                        <label for="debutPret">Numéro d’identification :</label>
+                        <select name="client" id="client" required>
+                            <option value="--" selected="true" disabled="disabled">Sélectionner un client</option>
+                        <?php foreach ($customers as $key => $customer) : ?>
+                            <option value="<?= $customer['id_customer'] ?>"><?= $customer['id_customer'] ?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="debutPret">Date de pret :</label>
+                        <input type="date" name="debutPret" id="debutPret" required>
+                    </div>
+
+                    <div>
+                        <label for="finPret">A rendre le :</label>
+                        <input type="date" name="finPret" id="finPret" required>
+                    </div>
+
+                    <input type="submit" id='submitEmprunt' value='Ajouter' class="btnAjouter">
+                </form>
+
+                <h3>Statut :</h3>
+                <?php if($book['available'] == 0) : ?>
+                    <p>Disponible</p>
+                <?php else : ?>
+                    <p>Emprunté</p>
+                <?php endif ?>
+                <!-- <h3>Emprunteur :</h3>
                 <label for="Numéro">Identifiant</label><br>
                 <input type="text" name="Numéro">
                 <br><br>
@@ -21,7 +53,7 @@
                 <label for="Adresse">Adresse</label><br>
                 <input type="text" name="Adresse">
                 <br><br>
-                <button class="btnFiche">Rechercher</button>
+                <button class="btnFiche">Rechercher</button> -->
                 <div class="themeSelector">
                     <div id="theme1"> </div>
                     <div id="theme2"> </div>
@@ -53,6 +85,10 @@
                 class="TextAreaOuvrage" disabled><?= $book['description'] ?></textarea>
             <br>
 
+            <?php if(isset($_SESSION['loan_error'])) : ?>
+                <div class="selectStatusE">Dejà emprunté</div>
+            <?php endif ?>
+
             <table class="tableEmprunteur">
                 <tr class="tableThead">
                     <td>Identifiant</td>
@@ -61,14 +97,24 @@
                     <td>Adresse</td>
                     <td>Téléphone</td>
                 </tr>
+
+            <?php if(isset($loans)) : ?>
+                <?php foreach ($loans as $key => $loan) : ?>
+                    <tr class="tableTr">
+                        <td class="tableTd"><?= $loan['id_customer'] ?></td>
+                        <td class="tableTd"><?= $loan['last_name'] ?></td>
+                        <td class="tableTd"><?= $loan['first_name'] ?></td>
+                        <td class="tableTd"><?= $loan['address'] ?></td>
+                        <td class="tableTd"><?= $loan['phone'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            <?php else : ?>
                 <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
+                        <td colspan="5" class="tableTd">Cet ouvrage n'a jamais été emprunté.</td>
                 </tr>
-                <tr class="tableTr">
+            <?php endif ?>
+
+                <!-- <tr class="tableTr">
                     <td class="tableTd">00012</td>
                     <td class="tableTd">BIDULE</td>
                     <td class="tableTd">Jean-Louis</td>
@@ -256,7 +302,7 @@
                     <td class="tableTd">Jean-Louis</td>
                     <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
                     <td class="tableTd">06.21.54.23.83</td>
-                </tr>
+                </tr> -->
             </table>
         </div>
 
