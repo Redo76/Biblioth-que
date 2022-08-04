@@ -2,6 +2,10 @@
 
 <?php ob_start(); ?>
 
+<!-- !!!!!!!!!! -->
+<!-- MODIFICATION DES CLASSES SUR LES INPUT DE GAUCHE POUR -->
+<!-- COLLER AU CLASSES EXISTANTE -->
+
 <h1>Details de l'ouvrage</h1>
 <div class="pageContainer">
     <div class="filters">

@@ -2,6 +2,10 @@
 
 <?php ob_start(); ?>
 
+<!-- !!!!!!!!!! -->
+<!-- MODIFICATION DES CLASSES SUR LA LISTE DES MEMBRES POUR -->
+<!-- COLLER AU CLASSES EXISTANTE -->
+
 <h1>Liste des membres</h1>
 <div class="pageContainer">
     <div class="filters">
@@ -69,7 +73,7 @@
             <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['phone'] ?></p>
             </div>
-            <div class="colonneStatus">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['id_customer'] ?></p>
             </div>
             <div class="colonneMembreB">
