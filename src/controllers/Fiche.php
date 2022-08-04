@@ -23,6 +23,9 @@ class Fiche{
             $remainingTime = $Loan->remainingLoanTime($bookId, $currentCustomer['id_customer']);
         }
 
+        // $test = (!is_null($book['publisher'])) ? $book['publisher']  : "Donnée non renseigné" ;
+        // var_dump($test);
+
         require("../templates/fiche_livre.php");
         unset($_SESSION['loan_error']);
     }

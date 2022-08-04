@@ -74,11 +74,10 @@
                 <p class="booktitle"><?= $customer['id_customer'] ?></p>
             </div>
             <div class="colonneMembreB">
-                <select name="" class="selectEmpruntMembre" id="">
-                    <option value="Angels & Demons" class="">Angels & Demons</option>
-                    <option value="Artist and the Mathematician, The" class="">Artist and the Mathematician, The
-                    </option>
-                    <option value="Theory of Everything, The" class="">Theory of Everything, The</option>
+                <select name="emprunts" class="selectEmpruntMembre" id="">
+                <?php foreach ($loans as $key => $loan) : ?>
+                    <option value="<?= $Loan->findLoansByCustomerId($customer['id_customer'])['id_customer'] ?>"><?= $Loan->findLoansByCustomerId($customer['id_customer'])['Title'] ?></option>
+                <?php endforeach ?>
                 </select>
             </div>
             <!-- <div class="colonneFiche">

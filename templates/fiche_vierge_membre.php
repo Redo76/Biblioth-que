@@ -1,4 +1,4 @@
-<?php $title = "creation_membre"; ?>
+<?php $title = "Creation d'un membre"; ?>
 
 <?php ob_start(); ?>
 <div class="login-form colonneLogin">

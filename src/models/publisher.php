@@ -22,4 +22,13 @@ class Publisher{
     public function setName($name){
         return $this -> name = $name;
     }
+
+    public function findPublishers()
+    {
+        require('../src/pdo/PDO.php');
+        $publishersDB = $db->prepare("SELECT p.name, p.id_publisher FROM  publisher p ");
+        $publishersDB->execute();
+        $publishers = $publishersDB->fetchAll();
+        return $publishers;
     }
+}

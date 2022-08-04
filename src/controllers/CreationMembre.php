@@ -19,6 +19,7 @@ class creationMembre {
         $phone = htmlspecialchars($_POST['telephone']);
         $email = htmlspecialchars($_POST['email']);
 
+        $validPhoneNumber = preg_match('%^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$%', $phone);
 
         $check = $db->prepare('SELECT first_name,last_name,address,phone, email FROM customer WHERE email = ?');
         $check->execute(array($email));
@@ -27,32 +28,37 @@ class creationMembre {
 
         $email = strtolower($email); // on transforme toute les lettres majuscule en minuscule ..
 
-        // Si la requete renvoie un 0 alors l'utilisateur n'existe pas 
-        if ($row == 0) {
-
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) { // Si l'email est de la bonne forme
-
-                // On insère dans la base de données
-                $insert = $db->prepare('INSERT INTO customer(first_name,last_name,address,phone, email) VALUES(:prenom,:nom,:adresse,:telephone,:email)');
-                $insert->execute(array(
-                    'prenom' => $firstName,
-                    'nom' => $lastName,
-                    'adresse' => $adress,
-                    'telephone' => $phone,
-                    'email' => $email,
-
-                ));
-                header('Location:  ../index.php?action=membres');
-            }
+        //Si le numéro est conforme
+        if ($validPhoneNumber == 1) {
+            // Si la requete renvoie un 0 alors l'utilisateur n'existe pas 
+            if ($row == 0) {
+    
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) { // Si l'email est de la bonne forme
+    
+                    // On insère dans la base de données
+                    $insert = $db->prepare('INSERT INTO customer(first_name,last_name,address,phone, email) VALUES(:prenom,:nom,:adresse,:telephone,:email)');
+                    $insert->execute(array(
+                        'prenom' => $firstName,
+                        'nom' => $lastName,
+                        'adresse' => $adress,
+                        'telephone' => $phone,
+                        'email' => $email,
+    
+                    ));
+                    header('Location:  ../index.php?action=membres');
+                }
+                else {
+                    header('Location:  ../index.php?action=creation_membre');
+                    $_SESSION['creation_error'] = 2;
+                }
+            } 
             else {
                 header('Location:  ../index.php?action=creation_membre');
-                $_SESSION['creation_error'] = 2;
+                $_SESSION['creation_error'] = 1;
             }
-        } 
-        else {
-            header('Location:  ../index.php?action=creation_membre');
-            $_SESSION['creation_error'] = 1;
+            
         }
+
     } 
 
     }

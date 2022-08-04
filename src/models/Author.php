@@ -33,7 +33,7 @@ class Author{
 
     public function findAuthors(){
         require('../src/pdo/PDO.php');
-        $bookDB = $db -> prepare("SELECT a.author FROM author a");
+        $bookDB = $db -> prepare("SELECT a.author, a.id_author FROM author a");
         $bookDB -> execute();
         $book = $bookDB -> fetchAll(); 
         return $book;

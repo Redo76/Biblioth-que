@@ -21,13 +21,18 @@ class Login{
         $adminDB -> execute(['firstName' => $firstname]);
         $admin = $adminDB -> fetch();
 
+        // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         var_dump($admin);
         var_dump($admin['password']);
+        var_dump($hashedPassword);
+
 
 
         if (isset($lastname) && isset($firstname) && isset($password)) {
             if($lastname == $admin['last_name'] && $firstname == $admin['first_name']){
-                if ($password == $admin['password']) {
+                // if ($password == $admin['password']) {
+                if (password_verify($password, $admin['password'])) {
                     $_SESSION['loggedUser'] = $firstname;
                     header('Location: ../index.php');
                 }
@@ -43,6 +48,7 @@ class Login{
         }
 
         var_dump($_SESSION);
+        var_dump(password_verify($password, $admin['password']));
 
     }
 }

@@ -8,6 +8,8 @@ require_once('../src/controllers/Login.php');
 require_once('../src/controllers/Logout.php');
 require_once('../src/controllers/HomeCustomer.php');
 require_once('../src/controllers/CreationMembre.php');
+require_once('../src/controllers/CreationBook.php');
+// require_once('../src/controllers/HomeCategory.php');
 
 try {
 
@@ -21,9 +23,6 @@ try {
             }
             elseif ($_GET["action"] == "returnLoan") {
                 (new Fiche())->returnLoan();
-            }
-            elseif ($_GET["action"] == "fichevierge") {
-                require("../templates/fiche_livre_vierge.php");
             }
             elseif ($_GET["action"] == "submitlogin") {
                 (new Login())->submitLogin();
@@ -42,6 +41,12 @@ try {
             }
             elseif ($_GET["action"] == "deleteBook") {
                 (new Homepage())->deleteLoanedBook();
+            }
+            elseif ($_GET["action"] == "fichevierge") {
+                (new CreationBook())->displayForm();
+            } 
+            elseif ($_GET["action"] == "creationlivre") {
+                (new CreationBook())->creation();
             }
         // }
         // else {

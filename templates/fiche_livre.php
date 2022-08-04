@@ -73,20 +73,24 @@
         <div class="DetailContainer">
             <div class="my2div">
                 <label for="InputTitre" class="labelOuvrage">Titre</label>
-                <input type="text" name="InputTitre" value="<?= $book['Title'] ?>" class="InputOuvrage" disabled>
+                <input type="text" name="InputTitre" value="<?= (!is_null($book['Title'])) ? $book['Title']  : "Donnée non renseigné" ?>" class="InputOuvrage" disabled>
                 <br>
 
                 <label for="InputAuteur" class="labelOuvrage">Auteur</label>
-                <input type="text" name="InputTitre" value="<?= $book['author'] ?>" class="InputOuvrage" disabled>
+                <input type="text" name="InputTitre" value="<?= (!is_null($book['author'])) ? $book['author']  : "Donnée non renseigné" ?>" class="InputOuvrage" disabled>
                 <br>
             </div>
             <div class="my2div">
                 <label for="InputDateDePublication" class="labelOuvrage">Publication</label>
-                <input type="date" name="InputDateDePublication" value="02/10/1978" class="InputOuvrage" disabled>
+                <input type="date" name="InputDateDePublication" value="<?= (!is_null($book['p_date'])) ? $book['p_date']  : "Donnée non renseigné" ?>" class="InputOuvrage" disabled>
                 <br>
 
                 <label for="InputRésumé" class="labelOuvrage">Genre</label>
-                <input type="text" name="InputTitre" value="<?= $book['category'] ?>" class="InputOuvrage" disabled>
+                <input type="text" name="InputTitre" value="<?= (!is_null($book['category'])) ? $book['category']  : "Donnée non renseigné" ?>" class="InputOuvrage" disabled>
+            </div>
+            <div class="my2div">
+                <label for="InputPublisher" class="labelOuvrage">Editeur</label>
+                <input type="text" name="InputPublisher" value="<?= (!is_null($book['publisher'])) ? $book['publisher']  : "Donnée non renseigné" ?>" class="InputOuvrage" disabled>
             </div>
             <br>
             <label for="InputRésumé" class="labelOuvrage">Résumé</label>

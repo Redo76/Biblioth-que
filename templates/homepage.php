@@ -7,10 +7,9 @@
         <div class="filters">
             <div class="search">
                 <h3>Opérations :</h3>
-                <label for="titre">Titre</label><br>
-                <input type="text" name="titre" class="inputEmprunteur">
-                <br><br>
-                <a href="./index.php?ficheLivreVierge.html"><button class="btnAjouter">Ajouter</button></a>
+
+                <br>
+                <a href="../index.php?action=fichevierge"><button class="btnAjouter">Ajouter</button></a>
                 <!-- <button class="btnSupprimer">Supprimer</button> -->
                 <br><br>
                 <h3>Recherche par :</h3>
