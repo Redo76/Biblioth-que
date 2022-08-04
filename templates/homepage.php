@@ -8,17 +8,17 @@
             <div class="search">
                 <h3>Opérations :</h3>
                 <label for="titre">Titre</label><br>
-                <input type="text" name="titre">
+                <input type="text" name="titre" class="inputEmprunteur">
                 <br><br>
                 <a href="./index.php?ficheLivreVierge.html"><button class="btnAjouter">Ajouter</button></a>
                 <!-- <button class="btnSupprimer">Supprimer</button> -->
                 <br><br>
                 <h3>Recherche par :</h3>
                 <label for="titre">Titre</label><br>
-                <input type="text" name="titre">
+                <input type="text" name="titre" class="inputEmprunteur">
                 <br><br>
                 <label for="auteur">Auteur</label><br>
-                <input type="text" name="auteur">
+                <input type="text" name="auteur" class="inputEmprunteur">
                 <br><br>
                 <button class="btnFiche">Rechercher</button>
                 <div class="themeSelector">
@@ -51,14 +51,27 @@
                         <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><p class="booktitle"><?= $book['Title'] ?></p></a>
                     </div>
                     <div class="colonneStatus">
-                        <select name="" class="selectStatusD" id="s1">
+                        <?php if ($book['available'] == 0) :?>
+                            <div class=" selectStatusD">Disponible</div>
+                        <?php else :?>
+                            <div class=" selectStatusP">Prêté</div>
+                        <?php endif ?>
+                        <!-- <select name="" class="selectStatusD" id="s1">
                             <option value="Dispo" class="optDispo" selected="selected">Disponible</option>
                             <option value="Prêté" class="optPret">Prêté</option>
-                        </select>
+                        </select> -->
                     </div>
-                    <div class="colonneEmprunteur">
-                        <input type="text" value="" class="inputEmprunteur" id="e1">
-                    </div>
+
+                    <?php if ($book['available'] == 0) :?>
+                        <div class="colonneEmprunteur">
+                            <input type="text" value="" class="inputEmprunteur" id="e1" disabled>
+                        </div>
+                    <?php else :?>
+                        <div class="colonneEmprunteur">
+                            <input type="text" value="<?= $Loan->findCurrentCustomer($book['id'])['first_name'] ?> <?= $Loan->findCurrentCustomer($book['id'])['last_name'] ?> " class="inputEmprunteur" id="e1" disabled>
+                        </div>
+                    <?php endif ?>
+                    
                     <!-- <div class="colonneFiche">
                         <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><button class="btnFiche">Fiche</button></a>
                     </div> -->

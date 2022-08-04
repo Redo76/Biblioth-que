@@ -2,15 +2,16 @@
 
 <?php ob_start(); ?>
 
+<!-- !!!!!!!!!! -->
+<!-- MODIFICATION DES CLASSES SUR LA LISTE DES MEMBRES POUR -->
+<!-- COLLER AU CLASSES EXISTANTE -->
+
 <h1>Liste des membres</h1>
 <div class="pageContainer">
     <div class="filters">
         <div class="search">
-            <h3>Opérations :</h3>
-            <label for="newAdherent">Nom du nouvel adhérent</label><br>
-            <input type="text" name="newAdherent" class="inputEmprunteur">
-            <br><br>
-            <a href="./index.php?action=creation_membre"><button class="btnAjouter">Ajouter</button></a>
+            <h3>Nouvel adhérent :</h3>
+            <a href="./index.php?action=creation_membre"><button class="btnAjouter">Ajouter un nouvel adhérent</button></a>
             <!-- <button class="btnSupprimer">Supprimer</button> -->
             <br><br>
             <h3>Recherche par :</h3>
@@ -31,22 +32,22 @@
     <!-- SECTION CATALOGUE /////////////////////////// -->
     <div class="catalogue">
         <div class="ligneCatalogue">
-            <div class="">
+            <div class="colonneMembre">
                 <strong>Nom</strong>
             </div>
-            <div class="">
+            <div class="colonneMembre">
                 <strong>Prénom</strong>
             </div>
-            <div class="">
+            <div class="colonneMembre">
                 <strong>Adresse</strong>
             </div>
-            <div class="">
+            <div class="colonneMembre">
                 <strong>Téléphone</strong>
             </div>
-            <div class="colonneStatusB">
+            <div class="colonneMembre">
                 <strong>Numéro</strong>
             </div>
-            <div class="colonneEmprunteurB">
+            <div class="colonneMembre">
                 <strong>Emprunts</strong>
             </div>
             <!-- <div class="colonneFicheB">
@@ -57,22 +58,22 @@
         <!-- EXEMPLE 1 -->
         <?php foreach ($customers as $key => $customer) : ?>
         <div class="ligneCatalogueB">
-            <div class="colonneTitre">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['last_name'] ?></p>
             </div>
-            <div class="colonneTitre">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['first_name'] ?></p>
             </div>
-            <div class="colonneTitre">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['address'] ?></p>
             </div>
-            <div class="colonneTitre">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['phone'] ?></p>
             </div>
-            <div class="colonneStatus">
+            <div class="colonneMembreB">
                 <p class="booktitle"><?= $customer['id_customer'] ?></p>
             </div>
-            <div class="colonneEmprunteur">
+            <div class="colonneMembreB">
                 <select name="" class="selectEmpruntMembre" id="">
                     <option value="Angels & Demons" class="">Angels & Demons</option>
                     <option value="Artist and the Mathematician, The" class="">Artist and the Mathematician, The

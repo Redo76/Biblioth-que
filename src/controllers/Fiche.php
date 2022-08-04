@@ -9,6 +9,7 @@ class Fiche{
     public function displayficheBook(){
         $bookId = $_GET['id'];
 
+
         $Book = new Book();
         $Customer = new Customer();
         $Loan = new Loan();
@@ -16,8 +17,11 @@ class Fiche{
         $book = $Book->findBookById($bookId);
         $customers = $Customer->findCustomers();
         $loans = $Loan->findLoansByBookId($bookId);
-        // var_dump($book);
-        // $authorName = $Author->findAuthorById($book['id_author']);
+        $currentCustomer = $Loan->findCurrentCustomer($bookId);
+
+        if ($book['available'] == 1) {
+            $remainingTime = $Loan->remainingLoanTime($bookId, $currentCustomer['id_customer']);
+        }
 
         require("../templates/fiche_livre.php");
         unset($_SESSION['loan_error']);
@@ -27,7 +31,7 @@ class Fiche{
         require('../src/pdo/PDO.php');
 
         $idCustomer = htmlspecialchars($_POST['client']);
-        $dateDebut = htmlspecialchars($_POST['debutPret']);
+        $dateDebut = date('Y-m-d');
         $dateFin = htmlspecialchars($_POST['finPret']);
         $idBook = $_GET['id'];
 
@@ -59,8 +63,18 @@ class Fiche{
             $_SESSION['loan_error'] = 1;
             header('Location:  ../index.php?action=fiche&id=' . $idBook);
         }
+    }
 
+    public function returnLoan(){
+        require('../src/pdo/PDO.php');
 
+        $idBook = $_GET['id'];
 
+        $update = $db->prepare('UPDATE books SET available = 0 WHERE id = :id');
+        $update->execute([
+            'id' => $idBook
+        ]);
+
+        header('Location:  ../index.php?action=fiche&id=' . $idBook);
     }
 }

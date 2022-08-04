@@ -1,3 +1,8 @@
+/* !!!!!!!!!! */
+/* AJOUT DE CLASSES */
+/* - colonneMembre */
+/* - colonneMembreB */
+
 html {
     scroll-behavior: smooth;
     --color0: rgb(0, 0, 0);
@@ -277,6 +282,7 @@ h1 {
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
     color: var(--color0b);
+    width: 50%;
 }
 
 .selectStatusD:hover {
@@ -289,6 +295,8 @@ h1 {
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
     color: var(--color0b);
+    width: 50%;
+
 }
 
 .selectStatusP:hover {
@@ -437,6 +445,23 @@ h1 {
     border-color: rgba(0, 0, 0, 0.3);
     color: rgb(32, 0, 64);
     width: 100px;
+}
+
+.colonneMembre {
+    width: 15%;
+    padding: 8px;
+    color: var(--color0b);
+    overflow: hidden;
+}
+
+.colonneMembreB {
+    background-color: hsla(210, 67%, 94%, 0.75);
+    width: 15%;
+    padding: 8px;
+    border-width: 1px;
+    border-style: solid none;
+    border-color: rgba(0, 0, 0, 0.06);
+    overflow: hidden;
 }
 
 /* ****************************************************************/

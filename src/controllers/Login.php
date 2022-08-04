@@ -29,7 +29,7 @@ class Login{
             if($lastname == $admin['last_name'] && $firstname == $admin['first_name']){
                 if ($password == $admin['password']) {
                     $_SESSION['loggedUser'] = $firstname;
-                    // header('Location: ../index.php');
+                    header('Location: ../index.php');
                 }
                 else {
                     // header('Location: ../index.php');

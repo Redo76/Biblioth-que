@@ -19,6 +19,9 @@ try {
             elseif ($_GET["action"] == "loan") {
                 (new Fiche())->submitLoan();
             }
+            elseif ($_GET["action"] == "returnLoan") {
+                (new Fiche())->returnLoan();
+            }
             elseif ($_GET["action"] == "fichevierge") {
                 require("../templates/fiche_livre_vierge.php");
             }

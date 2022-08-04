@@ -12,13 +12,15 @@ class creationMembre {
     public function creation(){
     require('../src/pdo/PDO.php');
 
-    if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])) {
+    if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['adresse'])&& !empty($_POST['telephone'])) {
         $firstName = htmlspecialchars($_POST['prenom']);
         $lastName = htmlspecialchars($_POST['nom']);
+        $adress = htmlspecialchars($_POST['adresse']);
+        $phone = htmlspecialchars($_POST['telephone']);
         $email = htmlspecialchars($_POST['email']);
 
 
-        $check = $db->prepare('SELECT first_name,last_name, email FROM customer WHERE email = ?');
+        $check = $db->prepare('SELECT first_name,last_name,address,phone, email FROM customer WHERE email = ?');
         $check->execute(array($email));
         $data = $check->fetch();
         $row = $check->rowCount();
@@ -31,14 +33,15 @@ class creationMembre {
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) { // Si l'email est de la bonne forme
 
                 // On insère dans la base de données
-                $insert = $db->prepare('INSERT INTO customer(first_name,last_name, email) VALUES(:prenom,:nom,:email)');
+                $insert = $db->prepare('INSERT INTO customer(first_name,last_name,address,phone, email) VALUES(:prenom,:nom,:adresse,:telephone,:email)');
                 $insert->execute(array(
                     'prenom' => $firstName,
                     'nom' => $lastName,
+                    'adresse' => $adress,
+                    'telephone' => $phone,
                     'email' => $email,
 
                 ));
-                // On redirige avec le message de succès
                 header('Location:  ../index.php?action=membres');
             }
             else {
