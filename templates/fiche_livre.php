@@ -25,7 +25,7 @@
                         <div>
                             <label for="debutPret">Numéro d’identification :</label>
                             <select name="client" id="client" required class="inputEmprunteur">
-                                <option value="--" selected="true" disabled="disabled">Sélectionner un client</option>
+                                <option value="" selected="true" disabled="disabled">Sélectionner un client</option>
                             <?php foreach ($customers as $key => $customer) : ?>
                                 <option value="<?= $customer['id_customer'] ?>"><?= $customer['id_customer'] ?></option>
                             <?php endforeach ?>
@@ -38,6 +38,10 @@
                         </div>
     
                         <input type="submit" id='submitEmprunt' value='Ajouter' class="btnAjouter">
+
+                        <?php if(isset($_SESSION['loan_error']) == 1) : ?>
+                            <div class="selectStatusE">Client ou date incorrect</div>
+                        <?php endif ?>
                     </form>
                 <?php endif ?>
 
@@ -90,7 +94,7 @@
                 class="TextAreaOuvrage" disabled><?= $book['description'] ?></textarea>
             <br>
 
-            <?php if(isset($_SESSION['loan_error'])) : ?>
+            <?php if(isset($_SESSION['loan_error']) == 2) : ?>
                 <div class="selectStatusE">Dejà emprunté</div>
             <?php endif ?>
 

@@ -35,33 +35,39 @@ class Fiche{
         $dateFin = htmlspecialchars($_POST['finPret']);
         $idBook = $_GET['id'];
 
-        $customerLoanDB = $db->prepare('SELECT b.available as available, l.id_customer as idCustomer, l.id_book as idBook FROM loans l INNER JOIN books b ON l.id_book = b.id WHERE l.id_customer = :id_customer AND l.id_book = :id_book ORDER BY l.id_loan DESC');
-        $customerLoanDB->execute([
-            "id_customer" => $idCustomer,
-            "id_book" => $idBook
-        ]);
-        $customerLoan = $customerLoanDB->fetch();
-
-        if (!isset($customerLoan) || $customerLoan['available'] == 0) {
-
-            $insert = $db->prepare('INSERT INTO loans(loan_date, end_date, id_book, id_customer) VALUES(:loan_date, :end_date, :id_book, :id_customer)');
-            $insert->execute([
-                'loan_date' => $dateDebut,
-                'end_date' => $dateFin,
-                "id_customer" => $idCustomer,
-                "id_book" => $idBook
-            ]);
-
-            $update = $db->prepare('UPDATE books SET available = 1 WHERE id = :id');
-            $update->execute([
-                'id' => $idBook
-            ]);
-
-            header('Location:  ../index.php?action=fiche&id=' . $idBook);
+        if (isset($idCustomer) && isset($dateFin)) {
+                    $customerLoanDB = $db->prepare('SELECT b.available as available, l.id_customer as idCustomer, l.id_book as idBook FROM loans l INNER JOIN books b ON l.id_book = b.id WHERE l.id_customer = :id_customer AND l.id_book = :id_book ORDER BY l.id_loan DESC');
+                    $customerLoanDB->execute([
+                        "id_customer" => $idCustomer,
+                        "id_book" => $idBook
+                    ]);
+                    $customerLoan = $customerLoanDB->fetch();
+            
+                    if (!isset($customerLoan) || $customerLoan['available'] == 0) {
+            
+                        $insert = $db->prepare('INSERT INTO loans(loan_date, end_date, id_book, id_customer) VALUES(:loan_date, :end_date, :id_book, :id_customer)');
+                        $insert->execute([
+                            'loan_date' => $dateDebut,
+                            'end_date' => $dateFin,
+                            "id_customer" => $idCustomer,
+                            "id_book" => $idBook
+                        ]);
+            
+                        $update = $db->prepare('UPDATE books SET available = 1 WHERE id = :id');
+                        $update->execute([
+                            'id' => $idBook
+                        ]);
+            
+                        header('Location:  ../index.php?action=fiche&id=' . $idBook);
+                    }
+                    else {
+                        header('Location:  ../index.php?action=fiche&id=' . $idBook);
+                        $_SESSION['loan_error'] = 2;
+                    }
         }
         else {
-            $_SESSION['loan_error'] = 1;
             header('Location:  ../index.php?action=fiche&id=' . $idBook);
+            $_SESSION['loan_error'] = 1;
         }
     }
 

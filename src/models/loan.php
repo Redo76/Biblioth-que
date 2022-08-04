@@ -57,7 +57,7 @@ class Loan
 
     public function remainingLoanTime($bookId, $customerId){
         require('../src/pdo/PDO.php');
-        $loansDB = $db -> prepare("SELECT l.loan_date as dateB, l.end_date as dateF  FROM loans l INNER JOIN books b ON l.id_book = b.id INNER JOIN customer c ON l.id_customer = c.id_customer  WHERE b.id = :id AND c.id_customer = :id_customer");
+        $loansDB = $db -> prepare("SELECT l.loan_date as dateB, l.end_date as dateF FROM loans l INNER JOIN books b ON l.id_book = b.id INNER JOIN customer c ON l.id_customer = c.id_customer WHERE b.id = :id AND c.id_customer = :id_customer ORDER BY l.id_loan DESC;");
         $loansDB -> execute([
             'id' => $bookId,
             'id_customer' => $customerId
@@ -67,7 +67,7 @@ class Loan
         $dateB = new DateTime($loanDate['dateB']);
         $dateF = new DateTime($loanDate['dateF']);
 
-        $diff = date_diff($dateB,$dateF);
-        return $diff->format('%d');
+        $diff = $dateF->diff($dateB)->format("%a");
+        return $diff;
     }
 }

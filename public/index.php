@@ -40,6 +40,9 @@ try {
             elseif ($_GET["action"] == "membres") {
                 (new HomeCustomer())->customers();
             }
+            elseif ($_GET["action"] == "deleteBook") {
+                (new Homepage())->deleteLoanedBook();
+            }
         // }
         // else {
         //     (new Login())->displayLogin();

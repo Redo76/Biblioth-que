@@ -43,8 +43,11 @@
                     <strong>Fiche</strong>
                 </div> -->
             </div>
+            
+            <?php if (isset($_SESSION['errorDelete'])) : ?>
+                <div class="selectStatusE"><?= $_SESSION['errorDelete'] ?></div>
+            <?php endif ?>
 
-            <!-- EXEMPLE 1 -->
             <?php foreach ($books as $key => $book) : ?>
                 <div class="ligneCatalogueB">
                     <div class="colonneTitre">
@@ -72,12 +75,14 @@
                         </div>
                     <?php endif ?>
                     
+                    <a href="index.php?action=deleteBook&id=<?= $book['id'] ?>&status=<?= $book['available'] ?>" id="deleteBook">Supprimer le livre</a>
+
                     <!-- <div class="colonneFiche">
                         <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><button class="btnFiche">Fiche</button></a>
                     </div> -->
                 </div>
             <?php endforeach ?>
-            <!-- FIN -->
+            
 
     </div>
 

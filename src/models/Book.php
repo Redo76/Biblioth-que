@@ -84,6 +84,11 @@ class Book
         return $book;
     }
 
+    public function deleteBook($id){
+        require('../src/pdo/PDO.php');
+        $bookDB = $db -> prepare("DELETE FROM books WHERE id = :id");
+        $bookDB -> execute(['id' => $id]);
+    }
 }
 
 
