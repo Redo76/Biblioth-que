@@ -84,13 +84,13 @@ a:hover {
     font-size: 1.0em;
 }
 
-#selectedLink {
+.selectedLink {
     color: var(--colorM2);
     text-decoration: none;
     font-size: 1.0em;
 }
 
-#selectedLink:hover {
+.selectedLink:hover {
     color: var(--colorM2Over);
     text-decoration: none;
     font-size: 1.0em;
@@ -130,6 +130,15 @@ h1 {
     /* overflow: hidden; */
     position: fixed;
     color: var(--color0b);
+}
+
+.search h3 {
+    color: hsla(0, 0%, 100%, 0.5);
+    margin: 12px;
+}
+
+.search h2 {
+    color: hsla(53, 100%, 75%, 0.3);
 }
 
 .themeSelector {
@@ -205,13 +214,13 @@ h1 {
 }
 
 .colonneStatusB {
-    width: 25%;
+    width: 23%;
     padding: 8px;
     color: var(--color0b);
 }
 
 .colonneEmprunteurB {
-    width: 25%;
+    width: 23%;
     /* width: 16%; */
     padding: 8px;
     color: var(--color0b);
@@ -242,7 +251,7 @@ h1 {
 
 .colonneStatus {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 25%;
+    width: 23%;
     padding: 8px;
     border-width: 1px;
     border-style: solid none;
@@ -251,7 +260,7 @@ h1 {
 
 .colonneEmprunteur {
     background-color: hsla(210, 67%, 94%, 0.75);
-    width: 25%;
+    width: 23%;
     padding: 8px;
     border-width: 1px;
     border-style: solid none;
@@ -282,6 +291,8 @@ h1 {
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
     color: var(--color0b);
+    width: 50%;
+    overflow: hidden;
 }
 
 .selectStatusD:hover {
@@ -294,6 +305,9 @@ h1 {
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
     color: var(--color0b);
+    width: 50%;
+    overflow: hidden;
+
 }
 
 .selectStatusP:hover {
@@ -305,11 +319,12 @@ h1 {
     border-radius: 0.3em;
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
 }
 
-.selectStatusE:hover {
+/* .selectStatusE:hover {
     background-color: rgba(255, 255, 255, 0.8);
-}
+} */
 
 .optDispo {
     background-color: rgb(255, 255, 255);
@@ -323,7 +338,7 @@ h1 {
 
 .inputEmprunteur {
     background-color: hsla(200, 100%, 97%, 0.3);
-    width: 94%;
+    width: 85%;
     border-radius: 3px;
     padding: 3px;
     border-color: hsla(0, 0%, 0%, 0.3);
@@ -351,6 +366,7 @@ h1 {
     padding: 3px;
     border-color: rgba(0, 0, 0, 0.3);
     color: var(--color0b);
+    overflow: hidden;
 }
 
 .btnAjouter:hover {
@@ -365,6 +381,7 @@ h1 {
     padding: 3px;
     border-color: hsla(0, 0%, 0%, 0.3);
     color: var(--color0b);
+    overflow: hidden;
 }
 
 .btnSupprimer:hover {
@@ -392,7 +409,7 @@ h1 {
 .InputOuvrage {
     width: 256px;
     padding: 5px;
-    background-color: hsla(200, 100%, 97%, 0.8);
+    background-color: hsla(210, 67%, 94%, 0.75);
     border-radius: 3px;
 }
 
@@ -403,7 +420,7 @@ h1 {
 .TextAreaOuvrage {
     width: 683px;
     padding: 5px;
-    background-color: hsla(200, 100%, 97%, 0.8);
+    background-color: hsla(210, 67%, 94%, 0.75);
     border-radius: 3px;
 }
 

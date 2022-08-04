@@ -2,19 +2,12 @@
 
 <?php ob_start(); ?>
 
-<!-- !!!!!!!!!! -->
-<!-- MODIFICATION DES CLASSES SUR LES INPUT DE GAUCHE POUR -->
-<!-- COLLER AU CLASSES EXISTANTE -->
-
 <h1>Catalogue des ouvrages</h1>
 <div class="pageContainer">
     <div class="filters">
         <div class="search">
-            <h3>Opérations :</h3>
-            <label for="titre">Titre</label><br>
-            <input type="text" name="titre" class="inputEmprunteur">
-            <br><br>
-            <a href="./index.php?ficheLivreVierge.html"><button class="btnAjouter">Ajouter</button></a>
+            <h3>Nouvel ouvrage :</h3>
+            <a href="../index.php?action=fichevierge"><button class="btnAjouter">Ajouter un nouvel ouvrage</button></a>
             <!-- <button class="btnSupprimer">Supprimer</button> -->
             <br><br>
             <h3>Recherche par :</h3>
@@ -43,12 +36,15 @@
             <div class="colonneEmprunteurB">
                 <strong>Emprunteur</strong>
             </div>
-            <!-- <div class="colonneFicheB">
-                    <strong>Fiche</strong>
-                </div> -->
+            <div class="colonneEmprunteurB">
+                <strong>Action</strong>
+            </div>
         </div>
 
-        <!-- EXEMPLE 1 -->
+        <?php if (isset($_SESSION['errorDelete'])) : ?>
+        <div class="selectStatusE"><?= $_SESSION['errorDelete'] ?></div>
+        <?php endif ?>
+
         <?php foreach ($books as $key => $book) : ?>
         <div class="ligneCatalogueB">
             <div class="colonneTitre">
@@ -57,20 +53,42 @@
                 </a>
             </div>
             <div class="colonneStatus">
-                <select name="" class="selectStatusD" id="s1">
-                    <option value="Dispo" class="optDispo" selected="selected">Disponible</option>
-                    <option value="Prêté" class="optPret">Prêté</option>
-                </select>
+                <?php if ($book['available'] == 0) : ?>
+                <div class="btnAjouter">Disponible</div>
+                <?php else : ?>
+                <div class="btnSupprimer">Prêté</div>
+                <?php endif ?>
+                <!-- <select name="" class="selectStatusD" id="s1">
+                            <option value="Dispo" class="optDispo" selected="selected">Disponible</option>
+                            <option value="Prêté" class="optPret">Prêté</option>
+                        </select> -->
             </div>
+
+            <?php if ($book['available'] == 0) : ?>
             <div class="colonneEmprunteur">
-                <input type="text" value="" class="inputEmprunteur" id="e1">
+                <input type="text" value="" class="inputEmprunteur" id="e1" disabled>
             </div>
+            <?php else : ?>
+            <div class="colonneEmprunteur">
+                <input type="text"
+                    value="<?= $Loan->findCurrentCustomer($book['id'])['first_name'] ?> <?= $Loan->findCurrentCustomer($book['id'])['last_name'] ?> "
+                    class="inputEmprunteur" id="e1" disabled>
+            </div>
+            <?php endif ?>
+
+            <div class="colonneEmprunteur">
+                <a href="index.php?action=deleteBook&id=<?= $book['id'] ?>&status=<?= $book['available'] ?>">
+                    <button class="btnSupprimer">Supprimer</button>
+                </a>
+
+            </div>
+
             <!-- <div class="colonneFiche">
                         <a href="./index.php?action=fiche&id=<?= $book['id'] ?>"><button class="btnFiche">Fiche</button></a>
                     </div> -->
         </div>
         <?php endforeach ?>
-        <!-- FIN -->
+
 
     </div>
 
