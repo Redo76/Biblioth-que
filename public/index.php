@@ -31,10 +31,10 @@ try {
                 (new Logout())->logout();
             }
             elseif ($_GET["action"] == "creation_membre") {
-                (new creationMembre)->displayForm();
+                (new CreationMembre)->displayForm();
             }
             elseif ($_GET["action"] == "submitCreation_membre") {
-                (new creationMembre)->creation();
+                (new CreationMembre)->creation();
             }
             elseif ($_GET["action"] == "membres") {
                 (new HomeCustomer())->customers();

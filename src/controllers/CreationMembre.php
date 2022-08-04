@@ -1,7 +1,7 @@
 <?php
 
 
-class creationMembre {
+class CreationMembre {
 
     public function displayForm(){
         require("../templates/fiche_vierge_membre.php");
@@ -12,7 +12,10 @@ class creationMembre {
     public function creation(){
     require('../src/pdo/PDO.php');
 
+    // header('Location:  ../index.php?');
+
     if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['adresse'])&& !empty($_POST['telephone'])) {
+
         $firstName = htmlspecialchars($_POST['prenom']);
         $lastName = htmlspecialchars($_POST['nom']);
         $adress = htmlspecialchars($_POST['adresse']);
@@ -57,6 +60,10 @@ class creationMembre {
                 $_SESSION['creation_error'] = 1;
             }
             
+        }
+        else {
+            header('Location:  ../index.php?action=creation_membre');
+            $_SESSION['creation_error'] = 1;
         }
 
     } 

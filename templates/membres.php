@@ -75,8 +75,8 @@
             </div>
             <div class="colonneMembreB">
                 <select name="emprunts" class="selectEmpruntMembre" id="">
-                <?php foreach ($loans as $key => $loan) : ?>
-                    <option value="<?= $Loan->findLoansByCustomerId($customer['id_customer'])['id_customer'] ?>"><?= $Loan->findLoansByCustomerId($customer['id_customer'])['Title'] ?></option>
+                <?php foreach ($Loan->findLoansByCustomerId($customer['id_customer']) as $key => $loan) : ?>
+                    <option value="<?= $loan['id_loan'] ?>"><?= $loan['Title'] ?></option>
                 <?php endforeach ?>
                 </select>
             </div>

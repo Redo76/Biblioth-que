@@ -54,6 +54,6 @@ class CreationBook
             'author' => $Author,
             'publisher' => $Publisher
         ));
-        header('Location: ./');
+        header('Location: ../index.php');
     }
 }

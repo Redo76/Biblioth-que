@@ -14,7 +14,6 @@ class HomeCustomer
         $customers = $Customer->findCustomers();
 
         $Loan = new Loan();
-        
         // var_dump($customers);
         
         require("../templates/membres.php");
