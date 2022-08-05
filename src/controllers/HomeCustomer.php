@@ -1,6 +1,6 @@
 <?php
 
-require_once("../src/models/Customer.php");
+require_once("../src/models/customer.php");
 require_once("../src/models/Loan.php");
 
 

@@ -54,13 +54,13 @@
             </div>
             <div class="colonneStatus">
                 <?php if ($book['available'] == 0) : ?>
-                    <a href="./index.php?action=fiche&id=<?= $book['id'] ?>">
-                        <div class="btnAjouter">Disponible</div>
-                    </a>
+                <a href="./index.php?action=fiche&id=<?= $book['id'] ?>">
+                    <div class="btnAjouter">Disponible</div>
+                </a>
                 <?php else : ?>
-                    <a href="./index.php?action=fiche&id=<?= $book['id'] ?>">
-                        <div class="btnSupprimer">Prêté</div>
-                    </a>
+                <a href="./index.php?action=fiche&id=<?= $book['id'] ?>">
+                    <div class="btnSupprimer">Prêté</div>
+                </a>
                 <?php endif ?>
                 <!-- <select name="" class="selectStatusD" id="s1">
                             <option value="Dispo" class="optDispo" selected="selected">Disponible</option>
@@ -92,21 +92,23 @@
                     </div> -->
         </div>
         <?php endforeach ?>
-        <nav>
-            <ul class="pagination">
-                <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
+        <div class="pagination">
+            <!-- <nav> -->
+            <ul>
+                <li class=" page-item <?= ($page == 1) ? "disabled" : "" ?>">
                     <a href="../index.php?page=<?= $page - 1 ?>" class="page-link">Précédente</a>
                 </li>
-                <?php for($i = 1; $i <= $nbrPages; $i++) : ?>
-                    <li class="page-item <?= ($page == $i) ? "active" : "" ?>">
-                        <a href="../index.php?page=<?= $i ?>" class="page-link"><?= $i ?></a>
-                    </li>
+                <?php for ($i = 1; $i <= $nbrPages; $i++) : ?>
+                <li class="page-item <?= ($page == $i) ? "active" : "" ?>">
+                    <a href="../index.php?page=<?= $i ?>" class="page-link"><?= $i ?></a>
+                </li>
                 <?php endfor ?>
                 <li class="page-item <?= ($page == $nbrPages) ? "disabled" : "" ?>">
                     <a href="../index.php?page=<?= $page + 1 ?>" class="page-link">Suivante</a>
                 </li>
             </ul>
-        </nav>
+            <!-- </nav> -->
+        </div>
 
     </div>
 
