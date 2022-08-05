@@ -496,7 +496,10 @@ h1 {
     flex-flow: column;
     align-items: center;
 }
-
+.disabled {
+    pointer-events:none;
+    opacity:0.6;        
+}
 
 /* ****************************************************************/
 /* tweak for small screen *****************************************/

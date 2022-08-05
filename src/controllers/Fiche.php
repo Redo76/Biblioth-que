@@ -39,7 +39,7 @@ class Fiche{
         $idCustomer = htmlspecialchars($_POST['client']);
         $dateDebut = date('Y-m-d');
         $dateFin = htmlspecialchars($_POST['finPret']);
-        $idBook = $_GET['id'];
+        $idBook = strip_tags($_GET['id']);
         
         $Loan = new Loan();
         
@@ -100,7 +100,7 @@ class Fiche{
     public function returnLoan(){
         require('../src/pdo/PDO.php');
 
-        $idBook = $_GET['id'];
+        $idBook = strip_tags($_GET['id']);
 
         $update = $db->prepare('UPDATE books SET available = 0 WHERE id = :id');
         $update->execute([
