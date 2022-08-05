@@ -8,44 +8,29 @@
 
     <!-- formulaire -->
     <div class="colonneLogin">
-        <!-- <form method="post" action="index.php?action=login">
-            <br>
-            <label for="firstname">Prénom</label>
-            <input type="text" name="firstname" required>
-            <br>
-            <label for="lastname">Nom</label>
-            <input type="text" name="lastname" required>
-            <br>
-            <label for="password">Mot de passe</label>
-            <input type="text" name="password" required>
-            <br><br>
-            <input type="submit">
-            <br><br>
-        </form> -->
         <form action="index.php?action=submitlogin" method="POST">
-                
-                <label><b>Prénom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le prénom d'utilisateur" name="firstname" required>
-
-                <label><b>Nom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le nom d'utilisateur" name="lastname" required>
-
-                <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrer le mot de passe" name="password" required>
-
-                <input type="submit" id='submit' value='LOGIN' >
-                <?php
-                if(isset($_SESSION['login_error'])){
-                    $err = $_SESSION['login_error'];
-                    if($err==1 || $err==2)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                }
-                ?>
-            </form>
+            <br>
+            <input type="text" class="inputEmprunteur" placeholder="Prénom d'utilisateur" name="firstname" required>
+            <br>
+            <input type="text" class="inputEmprunteur" placeholder="Nom d'utilisateur" name="lastname" required>
+            <br>
+            <input type="password" class="inputEmprunteur" placeholder="Mot de passe" name="password" required>
+            <br>
+            <input type="submit" class="btnAjouter" id='submit' value='LOGIN'>
+            <br>
+            <?php
+            if (isset($_SESSION['login_error'])) {
+                $err = $_SESSION['login_error'];
+                if ($err == 1 || $err == 2)
+                    echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+            }
+            ?>
+        </form>
     </div>
     <!-- FIN -->
 
+</div>
 
-    <?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
 
-    <?php require("base.php");
+<?php require("base.php");

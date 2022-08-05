@@ -75,7 +75,7 @@ class Loan
         $dateB = new DateTime($loanDate['dateB']);
         $dateF = new DateTime($loanDate['dateF']);
 
-        $diff = $dateF->diff($dateB)->format("%a");
+        $diff = $dateB->diff($dateF)->format("%r%a");
         return $diff;
     }
 }
