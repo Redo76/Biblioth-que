@@ -2,10 +2,6 @@
 
 <?php ob_start(); ?>
 
-<!-- !!!!!!!!!! -->
-<!-- MODIFICATION DES CLASSES SUR LES INPUT DE GAUCHE POUR -->
-<!-- COLLER AU CLASSES EXISTANTE -->
-
 <h1>Details de l'ouvrage</h1>
 <div class="pageContainer">
     <div class="filters">
@@ -13,24 +9,28 @@
             <h3>Opérations :</h3>
             <a href="./catalogue.html"><button class="btnAjouter">Valider</button></a>
             <a href="./catalogue.html"><button class="btnSupprimer">Supprimer</button></a>
-            <div class="selectStatusE">Emprunté par 00123</div>
+
 
             <h3>Ajouter un emprunt :</h3>
 
+            <?php if ($book['available'] == 1) : ?>
+            <div class="selectStatusE">
+                <p>Emprunté par n° <?= $currentCustomer['id_customer'] ?></p>
+                <h4>Temps restant :</h4>
+                <p><?= $remainingTime ?> Jour(s)</p>
+                <a href="../index.php?action=returnLoan&id=<?= $book['id'] ?>"><button class="btnAjouter">Rendre
+                        l'ouvrage</button></a>
+            </div>
+            <?php else : ?>
             <form action="index.php?action=loan&id=<?= $book['id'] ?>" method="post">
                 <div>
                     <label for="debutPret">Numéro d’identification :</label>
                     <select name="client" id="client" required class="inputEmprunteur">
-                        <option value="--" selected="true" disabled="disabled">Sélectionner un client</option>
+                        <option value="" selected="true" disabled="disabled">Sélectionner un client</option>
                         <?php foreach ($customers as $key => $customer) : ?>
                         <option value="<?= $customer['id_customer'] ?>"><?= $customer['id_customer'] ?></option>
                         <?php endforeach ?>
                     </select>
-                </div>
-
-                <div>
-                    <label for="debutPret">Date de pret :</label>
-                    <input type="date" name="debutPret" id="debutPret" required class="inputEmprunteur">
                 </div>
 
                 <div>
@@ -39,13 +39,19 @@
                 </div>
 
                 <input type="submit" id='submitEmprunt' value='Ajouter' class="btnAjouter">
+
+                <?php if (isset($_SESSION['loan_error']) == 1) : ?>
+                <div class="selectStatusE">Client ou date incorrect</div>
+                <?php endif ?>
             </form>
+            <?php endif ?>
+
 
             <h3>Statut :</h3>
             <?php if ($book['available'] == 0) : ?>
-            <p>Disponible</p>
+            <h2>Disponible</h2>
             <?php else : ?>
-            <p>Emprunté</p>
+            <h2>Emprunté</h2>
             <?php endif ?>
             <!-- <h3>Emprunteur :</h3>
                 <label for="Numéro">Identifiant</label><br>
@@ -68,20 +74,34 @@
     <div class="DetailContainer">
         <div class="my2div">
             <label for="InputTitre" class="labelOuvrage">Titre</label>
-            <input type="text" name="InputTitre" value="<?= $book['Title'] ?>" class="InputOuvrage" disabled>
+            <input type="text" name="InputTitre"
+                value="<?= (!is_null($book['Title'])) ? $book['Title']  : "Donnée non renseigné" ?>"
+                class="InputOuvrage" disabled>
             <br>
 
             <label for="InputAuteur" class="labelOuvrage">Auteur</label>
-            <input type="text" name="InputTitre" value="<?= $book['author'] ?>" class="InputOuvrage" disabled>
+            <input type="text" name="InputTitre"
+                value="<?= (!is_null($book['author'])) ? $book['author']  : "Donnée non renseigné" ?>"
+                class="InputOuvrage" disabled>
             <br>
         </div>
         <div class="my2div">
             <label for="InputDateDePublication" class="labelOuvrage">Publication</label>
-            <input type="date" name="InputDateDePublication" value="02/10/1978" class="InputOuvrage" disabled>
+            <input type="date" name="InputDateDePublication"
+                value="<?= (!is_null($book['p_date'])) ? $book['p_date']  : "Donnée non renseigné" ?>"
+                class="InputOuvrage" disabled>
             <br>
 
             <label for="InputRésumé" class="labelOuvrage">Genre</label>
-            <input type="text" name="InputTitre" value="<?= $book['category'] ?>" class="InputOuvrage" disabled>
+            <input type="text" name="InputTitre"
+                value="<?= (!is_null($book['category'])) ? $book['category']  : "Donnée non renseigné" ?>"
+                class="InputOuvrage" disabled>
+        </div>
+        <div class="my2div">
+            <label for="InputPublisher" class="labelOuvrage">Editeur</label>
+            <input type="text" name="InputPublisher"
+                value="<?= (!is_null($book['publisher'])) ? $book['publisher']  : "Donnée non renseigné" ?>"
+                class="InputOuvrage" disabled>
         </div>
         <br>
         <label for="InputRésumé" class="labelOuvrage">Résumé</label>
@@ -89,7 +109,7 @@
             disabled><?= $book['description'] ?></textarea>
         <br>
 
-        <?php if (isset($_SESSION['loan_error'])) : ?>
+        <?php if (isset($_SESSION['loan_error']) == 2) : ?>
         <div class="selectStatusE">Dejà emprunté</div>
         <?php endif ?>
 
@@ -117,196 +137,6 @@
                 <td colspan="5" class="tableTd">Cet ouvrage n'a jamais été emprunté.</td>
             </tr>
             <?php endif ?>
-
-            <!-- <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr>
-                <tr class="tableTr">
-                    <td>12345</td>
-                    <td>FALEZ</td>
-                    <td>Mathieu</td>
-                    <td>142, rue de l'abreuvoir 76116 Catenay</td>
-                    <td>06.11.51.27.73</td>
-                </tr>
-                <tr class="tableTr">
-                    <td class="tableTd">00012</td>
-                    <td class="tableTd">BIDULE</td>
-                    <td class="tableTd">Jean-Louis</td>
-                    <td class="tableTd">34, rue de l'amiral Pinpin 34213 Paramiok</td>
-                    <td class="tableTd">06.21.54.23.83</td>
-                </tr> -->
         </table>
     </div>
 
