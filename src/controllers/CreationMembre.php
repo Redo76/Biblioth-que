@@ -63,7 +63,7 @@ class CreationMembre {
         }
         else {
             header('Location:  ../index.php?action=creation_membre');
-            $_SESSION['creation_error'] = 1;
+            $_SESSION['creation_error'] = 3;
         }
 
     } 

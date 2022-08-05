@@ -33,6 +33,9 @@
             if ($err == 2) {
                 echo "<p style='color:red'>Email Invalide</p>";
             }
+            if ($err == 3) {
+                echo "<p style='color:red'>Le numéro de telephone entré n'est pas conforme</p>";
+            }
         }
         ?>
     </form>
