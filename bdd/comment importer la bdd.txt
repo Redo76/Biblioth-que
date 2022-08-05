@@ -1,0 +1,4 @@
+
+- créé une bdd library uft8_general_ci
+- selectionner la bdd library et...
+- importer library.sql (decocher verif clef etrangere)
