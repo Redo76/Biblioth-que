@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 04 août 2022 à 15:27
--- Version du serveur : 5.7.36
+-- Hôte : localhost
+-- Généré le : ven. 05 août 2022 à 08:34
+-- Version du serveur : 8.0.27
 -- Version de PHP : 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -27,14 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id_admin` int NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `admin`
@@ -49,12 +47,10 @@ INSERT INTO `admin` (`id_admin`, `first_name`, `last_name`, `password`) VALUES
 -- Structure de la table `author`
 --
 
-DROP TABLE IF EXISTS `author`;
-CREATE TABLE IF NOT EXISTS `author` (
-  `id_author` int(11) NOT NULL AUTO_INCREMENT,
-  `author` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_author`)
-) ENGINE=InnoDB AUTO_INCREMENT=111112 DEFAULT CHARSET=utf8;
+CREATE TABLE `author` (
+  `id_author` int NOT NULL,
+  `author` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `author`
@@ -194,21 +190,16 @@ INSERT INTO `author` (`id_author`, `author`) VALUES
 -- Structure de la table `books`
 --
 
-DROP TABLE IF EXISTS `books`;
-CREATE TABLE IF NOT EXISTS `books` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `books` (
+  `id` int NOT NULL,
   `Title` varchar(54) DEFAULT NULL,
   `published_date` date DEFAULT NULL,
   `available` tinyint(1) NOT NULL,
   `description` text NOT NULL,
-  `id_category` int(11) DEFAULT NULL,
-  `id_author` int(11) DEFAULT NULL,
-  `id_publisher` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_cat` (`id_category`),
-  KEY `fk_aut` (`id_author`),
-  KEY `fk_pub` (`id_publisher`)
-) ENGINE=InnoDB AUTO_INCREMENT=210007 DEFAULT CHARSET=utf8;
+  `id_category` int DEFAULT NULL,
+  `id_author` int DEFAULT NULL,
+  `id_publisher` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `books`
@@ -226,10 +217,11 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 (13, 'Argumentative Indian, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 103, NULL),
 (14, 'Arthashastra, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 70, NULL),
 (15, 'Artist and the Mathematician, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 11, 2, 11),
+(16, 'Asami Asami', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 21, 14),
 (17, 'Ashenden of The British Agent', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 75, 32),
 (18, 'Attorney, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, NULL, NULL),
 (19, 'Ayn Rand Answers', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 92, NULL),
-(20, 'Batman Earth One', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, NULL, NULL),
+(20, 'Batman Earth One', NULL, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, NULL, NULL),
 (21, 'Batman Handbook', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, NULL, NULL),
 (22, 'Batman: The Long Halloween', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, NULL, NULL),
 (23, 'Beautiful and the Damned, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 20, 20),
@@ -245,7 +237,7 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 (33, 'Cathedral and the Bazaar, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 95, NULL),
 (34, 'Char Shabda', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 21, NULL),
 (35, 'Christmas Carol, A', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 24, NULL),
-(36, 'City of Djinns', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 6, 18, NULL),
+(36, 'City of Djinns', NULL, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 6, 18, NULL),
 (37, 'City of Joy, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 72, 31),
 (38, 'Clash of Civilizations and Remaking of the World Order', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 6, 63, 27),
 (39, 'Code Book, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 11, 106, NULL),
@@ -312,9 +304,9 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 (100, 'Image Processing with MATLAB', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 12, 35, NULL),
 (101, 'In a Free State', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 80, 26),
 (102, 'India from Midnight to Milennium', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 6, 116, 20),
-(103, 'India\'s Legal System', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 81, NULL),
-(104, 'Information, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 11, 48, NULL);
+(103, 'India\'s Legal System', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 81, NULL);
 INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`, `id_category`, `id_author`, `id_publisher`) VALUES
+(104, 'Information, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 11, 48, NULL),
 (105, 'Integration of the Indian States', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 6, 77, 17),
 (106, 'Introduction to Algorithms', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 2, 16, 15),
 (107, 'Jim Corbett Omnibus', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 15, NULL),
@@ -412,9 +404,9 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 (199, 'Vyakti ani Valli', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 8, 21, NULL),
 (200, 'We the Living', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 92, 20),
 (201, 'We the Nation', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 87, NULL),
-(202, 'We the People', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 87, NULL),
-(203, 'Wealth of Nations, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 107, 24);
+(202, 'We the People', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 87, NULL);
 INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`, `id_category`, `id_author`, `id_publisher`) VALUES
+(203, 'Wealth of Nations, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 107, 24),
 (204, 'Winter of Our Discontent, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, 109, 20),
 (205, 'World\'s Great Thinkers, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, NULL, NULL),
 (206, 'World\'s Greatest Short Stories, The', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 5, NULL, 13),
@@ -422,8 +414,9 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 (208, 'Zen & The Art of Motorcycle Maintenance', NULL, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 9, 89, 32),
 (209, 'Batatyachi Chal', NULL, 0, 'description...', 5, 21, NULL),
 (210, 'Idiot, The', NULL, 0, 'description...', 5, 26, NULL),
-(210005, 'redouane', '2022-08-04', 0, 'Ce livre parle de moi.', 9, 8, 32),
-(210006, 'cz', '2022-08-06', 0, 'inconnucc', 1, 1, 1);
+(211, 'redouane', '2022-08-04', 0, 'Ce livre parle de moi.', 9, 8, 32),
+(210006, 'Comment distinguer l\'inconnu', '2022-08-04', 0, 'inconnu bien sûr', 9, 116, 10),
+(210007, 'mvc pour les nuls', '2022-08-06', 1, 'description a ajouter', 6, 6, 4);
 
 -- --------------------------------------------------------
 
@@ -431,12 +424,10 @@ INSERT INTO `books` (`id`, `Title`, `published_date`, `available`, `description`
 -- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=1394 DEFAULT CHARSET=utf8;
+CREATE TABLE `category` (
+  `id_category` int NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `category`
@@ -462,30 +453,27 @@ INSERT INTO `category` (`id_category`, `name`) VALUES
 -- Structure de la table `customer`
 --
 
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer` (
+  `id_customer` int NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `address` varchar(100) DEFAULT NULL,
-  `phone` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8;
+  `phone` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `customer`
 --
 
 INSERT INTO `customer` (`id_customer`, `first_name`, `last_name`, `email`, `address`, `phone`) VALUES
-(151, 'jc', 'monnet', 'exemple@gmail.com', '', ''),
-(152, 'Mathieu', 'FALEZ', 'youpi@exemple.com', '', ''),
-(153, 'h', 'ki', 're@jb.com', NULL, NULL),
-(154, 'a', 'b', 'a@b.com', NULL, NULL),
-(155, 'fe', 'fe', 'fe@fe.fr', NULL, NULL),
-(156, 'fqsf', 'fza', 'red@gr.gt', '5 rue dzad', '06.05'),
-(157, 're', 're', 'a@d.fr', 'rer', '0262548974'),
-(158, 'fzf', 'fzfz', 'aa@fe.fd', 'fzfzfz fzfzfz fzfz', '0754896321');
+(151, 'jc', 'monnet', 'exemple@gmail.com', '25, rue machin', '06.21.23.55.44'),
+(152, 'Mathieu', 'FALEZ', 'youpi@exemple.com', 'Catenay', '02.11.33.45.55'),
+(153, 'hubert', 'kiki', 'hkiki@gmail.com', '102, allée grotos', '03.22.11.54.22'),
+(154, 'antoine', 'bachin', 'a@b.com', '57 bis, rue deroy', '00.20.55.22.33'),
+(155, 'felix', 'ferrin', 'fe@fe.fr', '2, rue l\'orel', '01.11.12.11.13'),
+(156, 'albert', 'faza', 'red@gr.gt', '5 rue diad', '06.05.01.12.13'),
+(157, 'Jean-Claude', 'FALEZ', 'jean@falez.com', '143. rue du lavabo', '06.11.51.30.54');
 
 -- --------------------------------------------------------
 
@@ -493,17 +481,13 @@ INSERT INTO `customer` (`id_customer`, `first_name`, `last_name`, `email`, `addr
 -- Structure de la table `loans`
 --
 
-DROP TABLE IF EXISTS `loans`;
-CREATE TABLE IF NOT EXISTS `loans` (
-  `id_loan` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `loans` (
+  `id_loan` int NOT NULL,
   `loan_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `id_book` int(11) DEFAULT NULL,
-  `id_customer` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_loan`),
-  KEY `fk_book` (`id_book`),
-  KEY `fk_customer` (`id_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `id_book` int DEFAULT NULL,
+  `id_customer` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `loans`
@@ -524,7 +508,14 @@ INSERT INTO `loans` (`id_loan`, `loan_date`, `end_date`, `id_book`, `id_customer
 (15, '2022-08-04', '2022-08-07', 10, 152),
 (16, '2022-08-04', '2022-08-06', 1, 151),
 (17, '2022-08-04', '2022-08-09', 1, 151),
-(18, '2022-08-04', '2022-08-11', 5, 153);
+(18, '2022-08-04', '2022-08-11', 5, 153),
+(19, '2022-08-04', '2022-08-06', 210006, 154),
+(20, '2022-08-04', '2022-08-01', 36, 157),
+(21, '2022-08-04', '2022-08-18', 20, 153),
+(22, '2022-08-04', '2022-08-11', 210007, 152),
+(23, '2022-08-04', '2022-08-06', 2, 152),
+(24, '2022-08-05', '2022-08-04', 13, 154),
+(25, '2022-08-05', '2022-08-07', 1, 152);
 
 -- --------------------------------------------------------
 
@@ -532,12 +523,10 @@ INSERT INTO `loans` (`id_loan`, `loan_date`, `end_date`, `id_book`, `id_customer
 -- Structure de la table `publisher`
 --
 
-DROP TABLE IF EXISTS `publisher`;
-CREATE TABLE IF NOT EXISTS `publisher` (
-  `id_publisher` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_publisher`)
-) ENGINE=InnoDB AUTO_INCREMENT=62001 DEFAULT CHARSET=utf8;
+CREATE TABLE `publisher` (
+  `id_publisher` int NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `publisher`
@@ -577,6 +566,103 @@ INSERT INTO `publisher` (`id_publisher`, `name`) VALUES
 (31, 'vikas'),
 (32, 'Vintage'),
 (33, 'Wiley');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Index pour la table `author`
+--
+ALTER TABLE `author`
+  ADD PRIMARY KEY (`id_author`);
+
+--
+-- Index pour la table `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_cat` (`id_category`),
+  ADD KEY `fk_aut` (`id_author`),
+  ADD KEY `fk_pub` (`id_publisher`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Index pour la table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id_customer`);
+
+--
+-- Index pour la table `loans`
+--
+ALTER TABLE `loans`
+  ADD PRIMARY KEY (`id_loan`),
+  ADD KEY `fk_book` (`id_book`),
+  ADD KEY `fk_customer` (`id_customer`);
+
+--
+-- Index pour la table `publisher`
+--
+ALTER TABLE `publisher`
+  ADD PRIMARY KEY (`id_publisher`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `author`
+--
+ALTER TABLE `author`
+  MODIFY `id_author` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111112;
+
+--
+-- AUTO_INCREMENT pour la table `books`
+--
+ALTER TABLE `books`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210008;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1394;
+
+--
+-- AUTO_INCREMENT pour la table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+
+--
+-- AUTO_INCREMENT pour la table `loans`
+--
+ALTER TABLE `loans`
+  MODIFY `id_loan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT pour la table `publisher`
+--
+ALTER TABLE `publisher`
+  MODIFY `id_publisher` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62001;
 
 --
 -- Contraintes pour les tables déchargées
